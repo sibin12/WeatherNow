@@ -23,8 +23,8 @@ Before you can run the application, ensure you have the following prerequisites 
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/weather-website.git
-    cd weather-website
+    git clone https://github.com/sibin12/WeatherNow.git
+    cd WeatherNow
     ```
 
 2. **Install Dependencies:**
