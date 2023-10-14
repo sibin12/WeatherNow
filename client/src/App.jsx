@@ -7,27 +7,38 @@ import Forecast from './components/Forecast';
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null)
   const [forecast, setForecast] = useState(null)
+  const [error, setError] = useState(null);
 
-  const handleOnSearchChange = (searchData) => {
-    const [lat, lon] = searchData.value.split(" ");
+  const handleOnSearchChange = async (searchData) => {
+    try {
+      const [lat, lon] = searchData.value.split(" ");
 
-    const currentWeatherFetch = fetch(`${Weather_Api_URL}/weather?lat=${lat}&lon=${lon}&appid=${Weather_Api_KEY}&units=metric`)
-    const forecastFetch = fetch(`${Weather_Api_URL}/forecast?lat=${lat}&lon=${lon}&appid=${Weather_Api_KEY}`)
+      // Fetch current weather and forecast data from the API
+      const currentWeatherResponse = await fetch(`${Weather_Api_URL}/weather?lat=${lat}&lon=${lon}&appid=${Weather_Api_KEY}&units=metric`);
+      const forecastResponse = await fetch(`${Weather_Api_URL}/forecast?lat=${lat}&lon=${lon}&appid=${Weather_Api_KEY}`);
 
-    Promise.all([currentWeatherFetch, forecastFetch])
-      .then(async (res) => {
-        const weatherResponse = await res[0].json();
-        const forecastRespone = await res[1].json();
-        setCurrentWeather({ city: searchData.label, ...weatherResponse })
-        setForecast({ city: searchData.label, ...forecastRespone })
-      })
-      .catch((err) => console.log(err))
-  }
+      // Parse and set current weather and forecast data in state
+      const [currentWeatherData, forecastData] = await Promise.all([currentWeatherResponse.json(), forecastResponse.json()]);
+
+      setCurrentWeather({ city: searchData.label, ...currentWeatherData });
+      setForecast({ city: searchData.label, ...forecastData });
+    } catch (error) {
+      setError("An error occurred while fetching data. Please try again later.");
+      console.error("Error fetching data:", error);
+    }
+  };
+
 
   return (
     <>
       <div className='container max-w-sm m-auto mt-10 '>
         <Search onSearchChange={handleOnSearchChange} />
+
+        {error && (
+          <div className="text-center bg-red-200 p-4 rounded-lg shadow-lg mt-5">
+            <p className="text-lg text-red-700">{error}</p>
+          </div>
+        )}
 
         {(!currentWeather && !forecast) && (
           <div className="text-center bg-white p-6 rounded-lg shadow-lg mt-5">

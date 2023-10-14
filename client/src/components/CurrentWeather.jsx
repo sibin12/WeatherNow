@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CurrentWeather({data}) {
+function CurrentWeather({ data }) {
   return (
     <div className='w-3/4 rounded-lg text-white bg-slate-800 mt-10 me-auto mb-0 ms-auto p-5'>
 
@@ -21,9 +21,9 @@ function CurrentWeather({data}) {
             <p>Humidity </p>
           </div>
           <div className='col-start-6 col-span-1'>
-            <p>{Math.round(data.main.feels_like)}°C</p>
+            <p>{Math.round(data.main.feels_like)}°</p>
             <p>{data.wind.speed}</p>
-            <p>{data.main.humidity}</p>
+            <p>{data.main.humidity}%</p>
           </div>
         </div>
       </div>

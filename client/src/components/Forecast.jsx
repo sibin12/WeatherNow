@@ -27,7 +27,7 @@ const Forecast = ({ data }) => {
                                         className="w-40"
                                         alt="weather"
                                     />
-                                    <label className="flex-1 font-semibold ml-5">
+                                    <label className="flex-1 font-semibold ml-0 sm:ml-5">
                                         {forecastDays[idx]}
                                     </label>
                                     <label className="flex-1 text-right mr-5">
@@ -43,11 +43,11 @@ const Forecast = ({ data }) => {
                             <div className="grid gap-y-0 gap-x-4 sm:gap-x-4 sm:grid-cols-2 p-5">
                                 <div className="flex items-center">
                                     <label className="font-semibold text-gray-700">Pressure:</label>
-                                    <label>{item.main.pressure}</label>
+                                    <label>{item.main.pressure} hPa</label>
                                 </div>
                                 <div className="flex items-center">
                                     <label className="font-semibold text-gray-700">Humidity:</label>
-                                    <label>{item.main.humidity}</label>
+                                    <label>{item.main.humidity}%</label>
                                 </div>
                                 <div className="flex items-center">
                                     <label className="font-semibold text-gray-700">Clouds:</label>
