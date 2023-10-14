@@ -21,7 +21,7 @@ function CurrentWeather({data}) {
             <p>Humidity </p>
           </div>
           <div className='col-start-6 col-span-1'>
-            <p>{Math.round(data.main.feels_like)}</p>
+            <p>{Math.round(data.main.feels_like)}°C</p>
             <p>{data.wind.speed}</p>
             <p>{data.main.humidity}</p>
           </div>

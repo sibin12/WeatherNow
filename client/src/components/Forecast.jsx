@@ -21,7 +21,7 @@ const Forecast = ({ data }) => {
                     <AccordionItem key={idx}>
                         <AccordionItemHeading>
                             <AccordionItemButton>
-                                <div className="bg-gray-400 rounded-3xl h-40 my-5 flex items-center cursor-pointer text-lg p-5 ">
+                                <div className="bg-white rounded-3xl h-40 my-5 flex items-center cursor-pointer text-lg p-5 ">
                                     <img
                                         src={`icons/${item.weather[0].icon}.png`}
                                         className="w-40"
@@ -33,7 +33,7 @@ const Forecast = ({ data }) => {
                                     <label className="flex-1 text-right mr-5">
                                         {item.weather[0].description}
                                     </label>
-                                    <label className="text-gray-600">
+                                    <label className="text-gray-600 hidden sm:block">
                                         {Math.round(item.main.temp_max) / 10}°C / {Math.round(item.main.temp_min) / 10}°C
                                     </label>
                                 </div>

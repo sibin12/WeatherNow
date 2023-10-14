@@ -25,22 +25,24 @@ function App() {
   }
 
   return (
-    <div className='container max-w-sm m-auto mt-10 '>
-      <Search onSearchChange={handleOnSearchChange} />
+    <>
+      <div className='container max-w-sm m-auto mt-10 '>
+        <Search onSearchChange={handleOnSearchChange} />
 
-      {(!currentWeather && !forecast) && (
-        <div className="text-center bg-white p-6 rounded-lg shadow-lg mt-5">
-          <div className="text-3xl font-bold mb-4">Get Weather</div>
-          <div className="text-5xl mb-4">🔍</div>
-          <p className="text-lg">Search for weather data</p>
-        </div>
-      )}
+        {(!currentWeather && !forecast) && (
+          <div className="text-center bg-white p-6 rounded-lg shadow-lg mt-5">
+            <div className="text-3xl font-bold mb-4">Get Weather</div>
+            <div className="text-5xl mb-4">🔍</div>
+            <p className="text-lg">Search for weather data</p>
+          </div>
+        )}
 
-      {currentWeather && <CurrentWeather data={currentWeather} />}
-      <div className='grid mt-5'>
+        {currentWeather && <CurrentWeather data={currentWeather} />}
+      </div>
+      <div className=' mt-5 mx-10 '>
         {forecast && <Forecast data={forecast} />}
       </div>
-    </div>
+    </>
   )
 }
 
