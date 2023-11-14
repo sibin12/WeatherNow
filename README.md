@@ -1,4 +1,4 @@
-# Weather Website
+# WeatherNow
 
 Welcome to the WeatherNow project! This README file will guide you through the process of setting up and running the application.
 
